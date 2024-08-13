@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is first page of First app</h1>
+    <h2>list 2 length : {{ list_2 | length }}</h2>
+    <h2>5 added to digit : {{ digit | add:5 }}</h2>
+    <h2>Name : {{ name | capfirst }}</h2>
+    <h2>No Space : {{ name | cut:" " }}</h2>
+    <h2>Date : {{ birthday | date:"D d M Y" }}</h2>
+    <h2>Divisible by 2 : {{ digit | divisibleby:"2" }}</h2>
+    <h2>{{ list_2 | first }}</h2>
+    <h2>Name List : {{ name | make_list }}</h2>
+    <h2> Sliced : {{ list_1 | slice:":3" }}</h2>
+    <h2>Slugify : {{ name | slugify }}</h2>
+    <h2>Time : {{ birthday | time:"H:i" }}</h2>
+    <h2>Uppercase Name : {{ name | upper }}</h2>
+    <h2>Random from List 2 : {{ list_2 | random }}</h2>
+    <h2>Truncate : {{ name | truncatechars:7 }} </h2>
+    <h2>name word count : {{ name | wordcount }}</h2>
+    <h2>Before truncate wrods : "You can build web apps with python and Django"</h2>
+    <h2> After : {{"You can build web apps with python and Django" | truncatewords:7}}</h2>
+</body>
+</html>
