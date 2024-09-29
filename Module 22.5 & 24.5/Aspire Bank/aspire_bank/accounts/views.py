@@ -57,21 +57,21 @@ class user_update_view(View):
         form = user_update_form(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('profile')  
+            return redirect('home')  
         return render(request, self.template_name, {'form': form})
     
 
 
-
 def pass_change(request):
-    if(request.method == "POST"):
-        form = PasswordChangeForm(request.user, data =  request.POST)
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, data=request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,'Password Updated Successfully')
-            update_session_auth_hash(request,form.user)
+            messages.success(request, 'Password Updated Successfully')
+            update_session_auth_hash(request, form.user)
             send_transaction_email(request.user, "Password Change Message", "pass_change_mail.html")
-            return redirect("profile")
+            return redirect("profile")  # Ensure "profile" view handles necessary context
     else:
         form = PasswordChangeForm(user=request.user)
-    return render(request,"pass_change.html",{'form' : form})
+    
+    return render(request, "pass_change.html", {'form': form})

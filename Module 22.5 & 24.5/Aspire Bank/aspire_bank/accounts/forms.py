@@ -111,18 +111,18 @@ class user_update_form(forms.ModelForm):
         if commit:
             user.save()
 
-            user_account, created = user_account.objects.get_or_create(user=user) # jodi account thake taile seta jabe user_account ar jodi account na thake taile create hobe ar seta created er moddhe jabe
-            user_address, created = user_address.objects.get_or_create(user=user) 
+            account, created = user_account.objects.get_or_create(user=user) # jodi account thake taile seta jabe user_account ar jodi account na thake taile create hobe ar seta created er moddhe jabe
+            address, created = user_address.objects.get_or_create(user=user) 
 
-            user_account.account_type = self.cleaned_data['account_type']
-            user_account.gender = self.cleaned_data['gender']
-            user_account.birthdate = self.cleaned_data['birthdate']
-            user_account.save()
+            account.account_type = self.cleaned_data['account_type']
+            account.gender = self.cleaned_data['gender']
+            account.birthdate = self.cleaned_data['birthdate']
+            account.save()
 
-            user_address.street_address = self.cleaned_data['street_address']
-            user_address.city = self.cleaned_data['city']
-            user_address.postal_code = self.cleaned_data['postal_code']
-            user_address.country = self.cleaned_data['country']
-            user_address.save()
+            address.street_address = self.cleaned_data['street_address']
+            address.city = self.cleaned_data['city']
+            address.postal_code = self.cleaned_data['postal_code']
+            address.country = self.cleaned_data['country']
+            address.save()
 
         return user
