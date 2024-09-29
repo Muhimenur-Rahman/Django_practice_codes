@@ -191,7 +191,7 @@ class PayLoanView(LoginRequiredMixin, View):
 
 class LoanListView(LoginRequiredMixin,ListView):
     model = user_transactions
-    template_name = 'trcansactions/loan_request.html'
+    template_name = 'transactions/loan_request.html'
     context_object_name = 'loans' # loan list ta ei loans context er moddhe thakbe
     
     def get_queryset(self):
