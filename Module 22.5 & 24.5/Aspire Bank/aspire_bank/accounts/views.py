@@ -61,17 +61,15 @@ class user_update_view(View):
         return render(request, self.template_name, {'form': form})
     
 
-
+@login_required
 def pass_change(request):
-    if request.method == "POST":
-        form = PasswordChangeForm(request.user, data=request.POST)
+    if(request.method == "POST"):
+        form = PasswordChangeForm(request.user, data =  request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Password Updated Successfully')
-            update_session_auth_hash(request, form.user)
-            send_transaction_email(request.user, "Password Change Message", "pass_change_mail.html")
-            return redirect("profile")  # Ensure "profile" view handles necessary context
+            messages.success(request,'Password Updated Successfully')
+            update_session_auth_hash(request,form.user)
+            return redirect("profile")
     else:
         form = PasswordChangeForm(user=request.user)
-    
-    return render(request, "pass_change.html", {'form': form})
+    return render(request,"pass_change.html",{'form' : form})
